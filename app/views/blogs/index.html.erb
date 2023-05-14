@@ -1,0 +1,28 @@
+<h1>投稿一覧</h1>
+<table>
+<tr>
+<th>場所</th>
+<th>日時</th>
+<th>★</th>
+<th>クチコミ</th>
+</tr>
+
+<% @blogs.each do |blog| %>
+<tr>
+<td><%= blog.place %></td>
+<td><%= blog.date %></td>
+<td><%= blog.raiting %></td>
+<td><%= blog.content %></td>
+
+<td><%= link_to '詳細を確認する',blog_path(blog.id)%></td>
+
+<td><%= link_to "ブログを編集する",edit_blog_path(blog.id)%></td>
+<td><%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete %></td>
+ </tr>
+
+<%end%>
+</table>
+
+<%= link_to '新しくブログを投稿する',new_blog_path%>
+
+<%= link_to 'ブログ一覧画面に戻る', blogs_path %>

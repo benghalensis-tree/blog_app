@@ -1,0 +1,20 @@
+<h3>投稿確認画面</h3>
+
+<%= form_with(model: @blog,local:true) do |form|%>
+  <% if @blog.errors.any?%>
+  <h2>空欄または140字以上で入力している項目があります。戻って修正してください。</h2>
+  <%end%>
+  <%= form.hidden_field :place%>
+  <%= form.hidden_field :date%>
+  <%= form.hidden_field :raiting%>
+  <%= form.hidden_field :content%>
+  <p>場所:<%= @blog.place %></p>
+  <p>日付:<%= @blog.date %></p>
+  <p>ランク:<%= @blog.raiting %></p>
+  <p>本文:<%= @blog.content %></p>
+
+  <% if @blog.errors.any? == false%>
+  <%= form.submit  "登録する" %>
+  <% end %>
+  <%= form.submit "戻る",name: 'back'%>
+<% end %>
